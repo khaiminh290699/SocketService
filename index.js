@@ -15,8 +15,8 @@ const users = io.of("users").use(authorize);
 users.on("connection", async (socket) => {
   socket.on("get_community", (data, callback) => {
     console.log(data)
-    const { responseKey, communities, selectedForums } = data;
-    users.emit(`get_community_${responseKey}`, { communities, selectedForums });
+    const { responseKey, communities, selectedForums, errorGetForums } = data;
+    users.emit(`get_community_${responseKey}`, { communities, selectedForums, errorGetForums });
     if (callback) {
       callback();
     }
